@@ -7,8 +7,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/login")
+@WebServlet(
+        name = "LogInController",
+        urlPatterns = "/login",
+        description = "processing of login requests"
+)
 public class LogInController extends HttpServlet {
+
+    private final String PARAMETER_EMAIL = "id";
+    private final String PARAMETER_PASSWORD = "password";
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         getServletContext().getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
