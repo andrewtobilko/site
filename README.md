@@ -5,7 +5,7 @@ The following technologies has been used for this project *(in the process)*:
    * Java SE 8
    * Java EE (Servlet API 3.0, JSP API 2.2, JSTL 1.2)
    * Tomcat 7.0 (the gradle plugin has been used)
-   * HTML, CSS, JavaScript (Bootstrap, jQuery, AJAX)
+   * HTML, CSS, JavaScript (Bootstrap, jQuery)
    * Gradle 2.8
    
 Screenshots:

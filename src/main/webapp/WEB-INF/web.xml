@@ -12,4 +12,18 @@
         <location>/WEB-INF/jsp/error.jsp</location>
     </error-page>
 
+<!--    <servlet>
+        <servlet-name>REST Service</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>REST Service</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <init-param>
+        <param-name>jersey.config.server.provider.packages</param-name>
+        <param-value>com.vogella.jersey.jaxb</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>-->
 </web-app>

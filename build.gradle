@@ -11,14 +11,16 @@ repositories {
 
 dependencies {
     providedCompile 'javax.servlet:javax.servlet-api:3.0.1',
-            'javax.servlet.jsp:jsp-api:2.2'
+            'javax.servlet.jsp:jsp-api:2.2',
+            'mysql:mysql-connector-java:5.1.37',
+            'org.hibernate:hibernate-entitymanager:5.0.3.Final'
 
-    compile 'javax.servlet:jstl:1.2'
+    compile 'javax.servlet:jstl:1.2',
+            'ch.qos.logback:logback-classic:1.1.3'
 
-    def tomcatVersion = '7.0.59'
-    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
-            "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
-            "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+    tomcat 'org.apache.tomcat.embed:tomcat-embed-core:7.0.59',
+            'org.apache.tomcat.embed:tomcat-embed-logging-juli:7.0.59',
+            'org.apache.tomcat.embed:tomcat-embed-jasper:7.0.59'
 }
 
 buildscript {
@@ -39,6 +41,9 @@ check.dependsOn.remove(test)
 
 tomcat {
     contextPath = '/'
+    httpPort = 8000
+    httpsPort = 8001
+    enableSSL = true
 }
 
 task wrapper(type: Wrapper) {

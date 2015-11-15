@@ -38,22 +38,22 @@
                             <div id="or">or</div>
                         </div>
 
-                        <form>
+                        <form action="signup" method="POST">
                             <div class="form-group">
                                 <label for="name">Display name</label>
-                                <input type="email" class="form-control" id="name" placeholder="Name">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Email">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" placeholder="********">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="********">
                             </div>
                             <div class="form-group">
                                 <label for="confirmedpassword">Confirm password</label>
-                                <input type="email" class="form-control" id="confirmedpassword" placeholder="********">
+                                <input type="password" class="form-control" id="confirmedpassword" name="confirmedpassword" placeholder="********">
                             </div>
                             <button type="submit" class="btn btn-default">Sign up</button>
                         </form>
@@ -61,7 +61,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 </body>

@@ -3,9 +3,14 @@
 <html lang="en">
 <head>
     <title>Main</title>
+    <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
 </head>
 <body>
-    <a href="login">Log in page</a>
-    <a href="signup">Sign up page</a>
+<nav class="navbar navbar-default">
+    <ul class="nav navbar-nav">
+        <li><a href="login">Log in</a></li>
+        <li><a href="signup">Sign up</a></li>
+    </ul>
+</nav>
 </body>
 </html>
