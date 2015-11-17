@@ -80,5 +80,6 @@
         </c:choose>
     </div>
 </div>
+${param["message"]}
 </body>
 </html>

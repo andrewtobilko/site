@@ -21,10 +21,11 @@ import java.io.IOException;
         description = "processing of user's logout"
 )
 public class LogOutController extends HttpServlet {
-
-    private static final String PARAMETER_COMMAND = "logout";
-
     private final static Logger logger = LoggerFactory.getLogger(LogOutController.class);
+    /**
+     * Used to choose a type of command in {@code CommandFactory}.
+     */
+    private static final String PARAMETER_COMMAND = "logout";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

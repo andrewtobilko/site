@@ -13,6 +13,7 @@
         <li><a href="login">Log in</a></li>
         <li><a href="logout">Log out</a></li>
         <li><a href="signup">Sign up</a></li>
+        <li><a href="profile">My profile</a></li>
         <li><a href="users">Users</a></li>
     </ul>
 </nav>

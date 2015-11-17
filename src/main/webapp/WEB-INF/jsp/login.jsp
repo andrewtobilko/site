@@ -53,14 +53,16 @@
                                 <form method="post" action="login">
                                     <div class="form-group">
                                         <label for="email">Email</label>
+                                        <span class="error-message">${requestScope.get('message.email')}</span>
                                         <input type="email" class="form-control" id="email" name="email" placeholder="Email" onblur="validate()">
                                     </div>
                                     <div class="form-group">
                                         <label for="password">Password</label>
+                                        <span class="error-message">${requestScope.get('message.password')}</span>
                                         <input type="password" class="form-control" id="password" name="password" placeholder="Password" onblur="validate()">
                                     </div>
                                     <div class="checkbox">
-                                        <label><input type="checkbox" name="flag">Remember me</label>
+                                        <label><input type="checkbox" name="flag" value="true">Remember me</label>
                                     </div>
                                     <input type="hidden" name="command" value="login"/>
                                     <button type="submit" class="btn btn-default">Log in</button>

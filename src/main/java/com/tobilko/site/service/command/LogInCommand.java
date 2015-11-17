@@ -30,19 +30,19 @@ public class LogInCommand implements Command {
         for (User user : list) {
             if (user.getEmail().equals(email)) {
                 if(user.getPassword().equals(password)) {
-                    logger.debug("The user [{}] has been successfully authorized!", user.getEmail());
+                    logger.debug("The user [{}] has been authorized successfully!", user.getEmail());
                     HttpSession session = request.getSession();
                     session.setAttribute("user", user);
                     return true;
                 } else {
                     logger.debug("The user's authorization has been failed! Cause: incorrect password.");
-                    request.setAttribute("message", "incorrect password");
+                    request.setAttribute("message.password", "incorrect password");
                     return false;
                 }
             }
         }
         logger.debug("The user's authorization has been failed! Cause: incorrect email.");
-        request.setAttribute("message", "incorrect email");
+        request.setAttribute("message.email", "incorrect email");
         return false;
     }
 }

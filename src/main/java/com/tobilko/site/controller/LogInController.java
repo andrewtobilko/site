@@ -27,13 +27,14 @@ import java.io.IOException;
 )
 public class LogInController extends HttpServlet {
     /**
-     * Used to choose a type of command in {@code CommandFactory}.
-     */
-    private static final String PARAMETER_COMMAND = "login";
-    /**
      * Used to write to the logging system.
      */
     private final static Logger logger = LoggerFactory.getLogger(LogInController.class);
+
+    /**
+     * Used to choose a type of command in {@code CommandFactory}.
+     */
+    private static final String PARAMETER_COMMAND = "login";
 
     /**
      * The {@code doGet} method is used to dispatch to the login page.
@@ -66,7 +67,7 @@ public class LogInController extends HttpServlet {
 
     private void authorize(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         getServletContext()
-                .getRequestDispatcher(new CommandFactory().defineCommand(PARAMETER_COMMAND).execute(request) ? "/" : "/login")
+                .getRequestDispatcher(new CommandFactory().defineCommand(PARAMETER_COMMAND).execute(request) ? Page.INDEX.getPath() : Page.LOGIN.getPath())
                 .forward(request, response);
     }
 }
