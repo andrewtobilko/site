@@ -31,7 +31,8 @@ public class User implements Serializable {
     @Column(name = "password")
     private String password;
 
-    public User() {}
+    public User() {
+    }
 
     public User(String displayName, String email, String password) {
         this.displayName = displayName;
@@ -39,19 +40,53 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public long getId() { return id; }
-    public String getFirstName() { return firstName; }
-    public String getSecondName() { return secondName; }
-    public String getEmail() { return email; }
-    public String getDisplayName() { return displayName; }
-    public String getPassword() { return password; }
+    public long getId() {
+        return id;
+    }
 
-    public void setId(long id) { this.id = id; }
-    public void setFirstName(String firstName) { this.firstName = firstName; }
-    public void setSecondName(String secondName) { this.secondName = secondName; }
-    public void setEmail(String email) { this.email = email; }
-    public void setDisplayName(String displayName) { this.displayName = displayName; }
-    public void setPassword(String password) { this.password = password; }
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getSecondName() {
+        return secondName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -70,4 +105,10 @@ public class User implements Serializable {
     public int hashCode() {
         return Objects.hash(id, firstName, secondName, email, displayName, password);
     }
+
+    @Override
+    public String toString() {
+        return "[" + id + "] " + firstName + " " + secondName + " (" + displayName + ") [" + email + "]";
+    }
+
 }

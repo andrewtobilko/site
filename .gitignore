@@ -44,6 +44,7 @@ hs_err_pid*
 # Gradle:
 # .idea/gradle.xml
 # .idea/libraries
+/gradle
 
 # Mongo Explorer plugin:
 # .idea/mongoSettings.xml
@@ -59,6 +60,7 @@ hs_err_pid*
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
+
 
 # JIRA plugin
 atlassian-ide-plugin.xml

@@ -11,6 +11,10 @@
     <logger name="com.tobilko.site.controller.SignUpController" level="DEBUG"/>
     <logger name="com.tobilko.site.listener.ServletContextInitializationListener" level="DEBUG"/>
 
+    <logger name="com.tobilko.site.service.command.LogInCommand" level="DEBUG"/>
+    <logger name="com.tobilko.site.service.command.LogOutCommand" level="DEBUG"/>
+    <logger name="com.tobilko.site.service.command.SignUpCommand" level="DEBUG"/>
+
     <root level="DEBUG">
         <appender-ref ref="STDOUT"/>
     </root>

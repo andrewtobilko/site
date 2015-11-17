@@ -2,17 +2,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Error</title>
+    <title>Log out</title>
     <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../resources/css/style.css">
 </head>
 <body>
-<div class="row error">
+<div class="row logout">
     <div class="col-md-4 col-md-offset-4">
         <h1>
-            <small>I'm sorry. Page hasn't been found.</small>
+            <small>Clicking "Log out" will log you out of this site</small>
         </h1>
-        <img src="../../resources/img/404.png" alt="Error">
+        <form action="logout" method="POST">
+            <input type="hidden" name="command" value="logout">
+            <button type="submit" class="btn btn-default">Log out</button>
+        </form>
     </div>
 </div>
 </body>

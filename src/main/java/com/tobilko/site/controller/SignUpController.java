@@ -1,5 +1,9 @@
+/*
+ * Copyright (c) 2015. All rights reserved.
+ */
 package com.tobilko.site.controller;
 
+import com.tobilko.site.service.Page;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,7 +32,7 @@ public class SignUpController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         logger.debug("The request has been received - doGet");
-        getServletContext().getRequestDispatcher("/WEB-INF/jsp/signup.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher(Page.SIGNUP.getPath()).forward(request, response);
     }
 
     @Override
