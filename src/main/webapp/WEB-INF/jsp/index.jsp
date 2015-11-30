@@ -24,7 +24,7 @@
             <p>${user.firstName} ${user.secondName}</p>
         </c:when>
         <c:otherwise>
-            No information about user.
+            There is no information about a user.
         </c:otherwise>
     </c:choose>
 

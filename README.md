@@ -10,13 +10,22 @@ The following technologies has been used for this project *(in the process)*:
    * Hibernate 5.0 (the ORM implementation of the JPA)
    * Logback 1.1 (based on SLF4J API 1.7)
    
-Screenshots:
+**Screenshots:**
+
+Log in page:
 
 ![Log in form](http://i.stack.imgur.com/yFVPc.png)
 
+Sign up page:
+
 ![Sign up form](http://i.stack.imgur.com/CMp5h.png)
+
+Error page:
 
 ![Error page](http://i.stack.imgur.com/IKSt6.png)
 
+Error message:
+
+![Error message](http://i.stack.imgur.com/V4rlM.png)
 
 

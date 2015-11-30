@@ -80,3 +80,9 @@ h1, h2, h3, h4, h5, h6 {
     color: #d9534f;
     margin-left: 20px;
 }
+
+.user {
+    width: 300px;
+    border: 1px solid #e6e6e6;
+    display: inline-block;
+}
