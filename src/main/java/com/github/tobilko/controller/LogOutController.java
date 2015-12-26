@@ -1,10 +1,9 @@
-/*
- * Copyright (c) 2015. All rights reserved.
- */
-package com.tobilko.site.controller;
+package com.github.tobilko.controller;
 
-import com.tobilko.site.service.CommandFactory;
-import com.tobilko.site.service.Page;
+import com.github.tobilko.service.Command;
+import com.github.tobilko.service.command.CommandFactory;
+import com.github.tobilko.service.Page;
+import com.github.tobilko.service.command.AbstractCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,32 +14,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(
-        name = "LogOutController",
-        urlPatterns = "/logout",
-        description = "processing of user's logout"
-)
+@WebServlet("/logout")
 public class LogOutController extends HttpServlet {
+
     private final static Logger logger = LoggerFactory.getLogger(LogOutController.class);
-    /**
-     * Used to choose a type of command in {@code CommandFactory}.
-     */
-    private static final String PARAMETER_COMMAND = "logout";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        logger.debug("The request has been received [doGet]");
+        logger.debug("The request [{}] has been received.", request.getMethod());
         getServletContext().getRequestDispatcher(Page.LOGOUT.getPath()).forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        logger.debug("The request has been received [doPost]");
+        logger.debug("The request [{}] has been received.", request.getMethod());
         logOut(request, response);
     }
 
     private void logOut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        new CommandFactory().defineCommand(PARAMETER_COMMAND).execute(request);
-        getServletContext().getRequestDispatcher(Page.INDEX.getPath()).forward(request, response);
+        CommandFactory factory = (CommandFactory) request.getServletContext().getAttribute("factory");
+        AbstractCommand command = factory.defineCommand(Command.LOGOUT.getName());
+        // TODO: 25/12/2015 ternary operator : see the following line
+        String page = (command.execute(request) ? Page.INDEX : Page.INDEX).getPath();
+        getServletContext().getRequestDispatcher(page).forward(request, response);
     }
+
 }

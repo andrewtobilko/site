@@ -1,4 +1,4 @@
-package com.tobilko.site.entity;
+package com.github.tobilko.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;

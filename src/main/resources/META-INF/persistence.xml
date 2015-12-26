@@ -7,7 +7,7 @@
     <persistence-unit name="site" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>com.tobilko.site.entity.User</class>
+        <class>com.github.tobilko.entity.User</class>
 
         <properties>
 

@@ -1,4 +1,4 @@
-package com.tobilko.site.filter;
+package com.github.tobilko.filter;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;

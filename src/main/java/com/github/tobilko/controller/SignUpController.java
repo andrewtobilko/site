@@ -1,10 +1,12 @@
 /*
  * Copyright (c) 2015. All rights reserved.
  */
-package com.tobilko.site.controller;
+package com.github.tobilko.controller;
 
-import com.tobilko.site.service.CommandFactory;
-import com.tobilko.site.service.Page;
+import com.github.tobilko.service.Command;
+import com.github.tobilko.service.command.CommandFactory;
+import com.github.tobilko.service.Page;
+import com.github.tobilko.service.command.AbstractCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,31 +17,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(
-        name = "SignUpController",
-        urlPatterns = "/signup",
-        description = "processing of registration new users"
-)
+@WebServlet("/signup")
 public class SignUpController extends HttpServlet {
+
     private final static Logger logger = LoggerFactory.getLogger(SignUpController.class);
-    /**
-     * Used to choose a type of command in {@code CommandFactory}.
-     */
-    private static final String PARAMETER_COMMAND = "signup";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        logger.debug("The request has been received - doGet");
+        logger.debug("The request [{}] has been received.", request.getMethod());
         getServletContext().getRequestDispatcher(Page.SIGNUP.getPath()).forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        logger.debug("The request has been received - doPost");
+        logger.debug("The request [{}] has been received.", request.getMethod());
         register(request, response);
     }
 
     private void register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher(new CommandFactory().defineCommand(PARAMETER_COMMAND).execute(request) ? Page.LOGIN.getPath() : Page.SIGNUP.getPath()).forward(request, response);
+        CommandFactory factory = (CommandFactory) request.getServletContext().getAttribute("factory");
+        AbstractCommand command = factory.defineCommand(Command.SIGNUP.getName());
+        String page = (command.execute(request) ? Page.LOGIN : Page.SIGNUP).getPath();
+        getServletContext().getRequestDispatcher(page).forward(request, response);
     }
+
 }

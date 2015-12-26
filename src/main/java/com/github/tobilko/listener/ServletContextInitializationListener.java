@@ -1,5 +1,6 @@
-package com.tobilko.site.listener;
+package com.github.tobilko.listener;
 
+import com.github.tobilko.service.command.CommandFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,19 +14,21 @@ import javax.servlet.annotation.WebListener;
 public class ServletContextInitializationListener implements ServletContextListener {
 
     private final Logger logger = LoggerFactory.getLogger(ServletContextInitializationListener.class);
+
     private EntityManagerFactory factory;
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        logger.debug("The context has been initialized.");
+        logger.debug("The context has been initialized!");
 
         factory = Persistence.createEntityManagerFactory("site");
         servletContextEvent.getServletContext().setAttribute("manager", factory.createEntityManager());
+        servletContextEvent.getServletContext().setAttribute("factory", new CommandFactory());
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-        logger.debug("The context has been destroyed.");
+        logger.debug("The context has been destroyed!");
         factory.close();
     }
 }
