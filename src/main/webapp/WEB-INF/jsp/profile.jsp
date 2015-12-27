@@ -5,6 +5,8 @@
     <title>User ${user.firstName} ${user.secondName}</title>
 </head>
 <body>
+    <%@include file='templates/menu.jsp'%>
+
     First name: ${user.firstName} <br>
     Second name: ${user.secondName} <br>
     Display name: ${user.email} <br>

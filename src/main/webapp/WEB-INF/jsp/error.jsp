@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="../../resources/css/style.css">
 </head>
 <body>
-<div class="row error">
-    <div class="col-md-4 col-md-offset-4">
-        <h1>
-            <small>The page has not been found.</small>
-        </h1>
-        <img src="../../resources/img/404.png" alt="Error">
+    <%@include file='templates/menu.jsp' %>
+    <div class="row error">
+        <div class="col-md-4 col-md-offset-4">
+            <h1>
+                <small>The page has not been found.</small>
+            </h1>
+            <img src="../../resources/img/404.png" alt="Error">
+        </div>
     </div>
-</div>
 </body>
 </html>
