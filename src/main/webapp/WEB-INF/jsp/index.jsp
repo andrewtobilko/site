@@ -3,30 +3,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Main</title>
+    <title>Andrew Tobilko :: Personal web site</title>
     <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../resources/css/style.css">
+
+    <script src="../../resources/js/jquery-1.11.3.min.js"></script>
+    <script src="../../resources/js/bootstrap.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default">
-    <ul class="nav navbar-nav">
-        <li><a href="">Main</a></li>
-        <li><a href="login">Log in</a></li>
-        <li><a href="logout">Log out</a></li>
-        <li><a href="signup">Sign up</a></li>
-        <li><a href="profile">My profile</a></li>
-        <li><a href="users">Users</a></li>
-    </ul>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Tobilko</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="login">Log in</a></li>
+                <li><a href="logout">Log out</a></li>
+                <li><a href="signup">Sign up</a></li>
+                <li><a href="profile">My profile</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="profile">{profile image} ${user.firstName} ${user.secondName}</a></li>
+            </ul>
+        </div>
+    </div>
 </nav>
-
-    <c:choose>
-        <c:when test="${sessionScope.get('user') != null}">
-            <c:set var="user" value="${sessionScope.get('user')}"></c:set>
-            <p>${user.firstName} ${user.secondName}</p>
-        </c:when>
-        <c:otherwise>
-            There is no information about a user.
-        </c:otherwise>
-    </c:choose>
-
 </body>
 </html>

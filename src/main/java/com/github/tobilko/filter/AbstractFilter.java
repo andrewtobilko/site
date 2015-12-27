@@ -19,5 +19,3 @@ public abstract class AbstractFilter implements Filter {
 
     public abstract void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException;
 }
-
-

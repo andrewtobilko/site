@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.github.tobilko.service.Attribute.FACTORY_COMMAND;
+
 @WebServlet("/login")
 public class LogInController extends HttpServlet {
 
@@ -32,7 +34,7 @@ public class LogInController extends HttpServlet {
     }
 
     private void authorize(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CommandFactory factory = (CommandFactory) request.getServletContext().getAttribute("factory");
+        CommandFactory factory = (CommandFactory) request.getServletContext().getAttribute(FACTORY_COMMAND.getName());
         AbstractCommand command = factory.defineCommand(Command.LOGIN.getName());
         String page = (command.execute(request) ? Page.INDEX : Page.LOGIN).getPath();
         getServletContext().getRequestDispatcher(page).forward(request, response);

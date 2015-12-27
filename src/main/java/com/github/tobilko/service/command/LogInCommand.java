@@ -4,6 +4,8 @@ import com.github.tobilko.dao.DAO;
 import com.github.tobilko.dao.factory.DAOFactory;
 import com.github.tobilko.dao.factory.UserDAOFactory;
 import com.github.tobilko.entity.User;
+import com.github.tobilko.service.Attribute;
+import com.github.tobilko.service.Parameter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,16 +18,14 @@ public class LogInCommand extends AbstractCommand {
 
     private static final Logger logger = LoggerFactory.getLogger(LogInCommand.class);
 
-    private static final String PARAMETER_EMAIL = "email";
-    private static final String PARAMETER_PASSWORD = "password";
-
     @Override
     public boolean execute(HttpServletRequest request) {
         DAOFactory<User> factory = new UserDAOFactory();
-        DAO<User> dao = factory.createDAO((EntityManager) request.getServletContext().getAttribute("manager"));
+        DAO<User> dao = factory.createDAO((EntityManager) request.getServletContext()
+                .getAttribute(Attribute.FACTORY_MANAGER.getName()));
 
-        String email = request.getParameter(PARAMETER_EMAIL);
-        String password = request.getParameter(PARAMETER_PASSWORD);
+        String email = request.getParameter(Parameter.EMAIL.getName());
+        String password = request.getParameter(Parameter.PASSWORD.getName());
         String cause;
 
         Collection<User> list = dao.getAll();
@@ -35,12 +35,12 @@ public class LogInCommand extends AbstractCommand {
                 if (user.getPassword().equals(password)) {
                     logger.debug("The user [{}] has been authorized successfully!", email);
                     HttpSession session = request.getSession();
-                    session.setAttribute("user", user);
+                    session.setAttribute(Attribute.USER.getName(), user);
                     return true;
                 } else {
                     cause = "incorrect password";
                     logger.debug("The user authorization has been failed! [" + cause + "]");
-                    request.setAttribute("message.password", cause);
+                    request.setAttribute(Attribute.MESSAGE_PASSWORD.getName(), cause);
                     return false;
                 }
             }
@@ -48,7 +48,7 @@ public class LogInCommand extends AbstractCommand {
 
         cause = "incorrect email";
         logger.debug("The user's authorization has been failed! [" + cause + "]");
-        request.setAttribute("message.email", cause);
+        request.setAttribute(Attribute.MESSAGE_EMAIL.getName(), cause);
 
         return false;
     }

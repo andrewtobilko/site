@@ -18,7 +18,8 @@ public class ProfileController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher(Page.LOGIN.getPath()).forward(request, response);
+        logger.debug("The request [{}] has been received.", request.getMethod());
+        getServletContext().getRequestDispatcher(Page.PROFILE.getPath()).forward(request, response);
     }
 
     @Override

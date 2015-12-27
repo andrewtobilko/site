@@ -70,5 +70,5 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 
-# text files
-*.txt
+# text log files
+/logs/

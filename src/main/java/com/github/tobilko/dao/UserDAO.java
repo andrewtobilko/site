@@ -3,6 +3,7 @@ package com.github.tobilko.dao;
 import com.github.tobilko.entity.User;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import java.util.Collection;
 
 public class UserDAO implements DAO<User> {
@@ -14,8 +15,11 @@ public class UserDAO implements DAO<User> {
     }
 
     @Override
-    public void add(User element) {
-        throw new UnsupportedOperationException("add");
+    public void add(User user) {
+        EntityTransaction transaction = manager.getTransaction();
+        transaction.begin();
+        manager.persist(user);
+        transaction.commit();
     }
 
     @Override
@@ -29,8 +33,8 @@ public class UserDAO implements DAO<User> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<User> getAll() {
-        // TODO: 26/12/2015 it will be replaced by .class
         return manager.createNamedQuery("User.findAll").getResultList();
     }
 }

@@ -1,6 +1,7 @@
 package com.github.tobilko.service.command;
 
 import com.github.tobilko.entity.User;
+import com.github.tobilko.service.Attribute;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,7 +13,7 @@ public class LogOutCommand extends AbstractCommand {
 
     @Override
     public boolean execute(HttpServletRequest request) {
-        User user = (User)request.getSession().getAttribute("user");
+        User user = (User)request.getSession().getAttribute(Attribute.USER.getName());
         if (user != null) {
             logger.debug("The session [{}, {}] has been destroyed!", user.getDisplayName(), user.getEmail());
             request.getSession().invalidate();

@@ -4,9 +4,9 @@
 package com.github.tobilko.controller;
 
 import com.github.tobilko.service.Command;
-import com.github.tobilko.service.command.CommandFactory;
 import com.github.tobilko.service.Page;
 import com.github.tobilko.service.command.AbstractCommand;
+import com.github.tobilko.service.command.CommandFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
+import static com.github.tobilko.service.Attribute.FACTORY_COMMAND;
 
 @WebServlet("/signup")
 public class SignUpController extends HttpServlet {
@@ -35,7 +37,7 @@ public class SignUpController extends HttpServlet {
     }
 
     private void register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CommandFactory factory = (CommandFactory) request.getServletContext().getAttribute("factory");
+        CommandFactory factory = (CommandFactory) request.getServletContext().getAttribute(FACTORY_COMMAND.getName());
         AbstractCommand command = factory.defineCommand(Command.SIGNUP.getName());
         String page = (command.execute(request) ? Page.LOGIN : Page.SIGNUP).getPath();
         getServletContext().getRequestDispatcher(page).forward(request, response);

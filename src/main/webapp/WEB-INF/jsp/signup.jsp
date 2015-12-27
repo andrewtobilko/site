@@ -12,14 +12,13 @@
 <div class="row main">
     <div class="col-md-4 col-md-offset-4" id="container">
         <c:choose>
-            <c:when test="${sessionScope.get('user') != null}">
-                <c:set var="user" value="${sessionScope.get('user')}"></c:set>
+            <c:when test="${user != null}">
                 <h2>
                     <small>
-                        You have already been signed up as <u>${user.firstName} ${user.secondName}</u>.
+                        You have already been signed up as <a href="/profile">${user.firstName} ${user.secondName}</a>.
                         <br>
                         <br>
-                        f you want to create new user, follow to the <a href="/logout">log out page</a>.
+                        If you want to create a new user, follow to the <a href="/logout">log out page</a>.
                     </small>
                 </h2>
             </c:when>
@@ -80,6 +79,5 @@
         </c:choose>
     </div>
 </div>
-${param["message"]}
 </body>
 </html>

@@ -5,7 +5,8 @@ public enum Page {
     INDEX       ("/WEB-INF/jsp/index.jsp"),
     SIGNUP      ("/WEB-INF/jsp/signup.jsp"),
     LOGIN       ("/WEB-INF/jsp/login.jsp"),
-    LOGOUT      ("/WEB-INF/jsp/logout.jsp");
+    LOGOUT      ("/WEB-INF/jsp/logout.jsp"),
+    PROFILE     ("/WEB-INF/jsp/profile.jsp");
 
     private final String path;
 
@@ -17,4 +18,6 @@ public enum Page {
         return path;
     }
 
+    @Override
+    public String toString() { return "Page [path='" + path + "']"; }
 }

@@ -11,7 +11,5 @@ public interface DAO<T> {
 
     Collection<T> getAll();
 
-    default void remove(T element) {
-        throw new UnsupportedOperationException("remove");
-    }
+    default void remove(T element) { throw new UnsupportedOperationException("remove"); }
 }

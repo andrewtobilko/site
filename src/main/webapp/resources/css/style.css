@@ -1,10 +1,9 @@
-.whoareyou {
-    text-align: center;
+* {
     font-family: Oswald;
 }
 
-* {
-    font-family: Oswald;
+.whoareyou {
+    text-align: center;
 }
 
 .or-container {

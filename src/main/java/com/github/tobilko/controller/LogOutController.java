@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.github.tobilko.service.Attribute.FACTORY_COMMAND;
+
 @WebServlet("/logout")
 public class LogOutController extends HttpServlet {
 
@@ -32,11 +34,9 @@ public class LogOutController extends HttpServlet {
     }
 
     private void logOut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CommandFactory factory = (CommandFactory) request.getServletContext().getAttribute("factory");
+        CommandFactory factory = (CommandFactory) request.getServletContext().getAttribute(FACTORY_COMMAND.getName());
         AbstractCommand command = factory.defineCommand(Command.LOGOUT.getName());
-        // TODO: 25/12/2015 ternary operator : see the following line
-        String page = (command.execute(request) ? Page.INDEX : Page.INDEX).getPath();
-        getServletContext().getRequestDispatcher(page).forward(request, response);
+        getServletContext().getRequestDispatcher(Page.INDEX.getPath()).forward(request, response);
     }
 
 }

@@ -12,4 +12,6 @@ public enum Action {
 
     public AbstractCommand getCurrentCommand() { return command; }
 
+    @Override
+    public String toString() { return "Action [" + command + "]"; }
 }

@@ -1,5 +1,6 @@
 package com.github.tobilko.listener;
 
+import com.github.tobilko.service.Attribute;
 import com.github.tobilko.service.command.CommandFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,8 +23,12 @@ public class ServletContextInitializationListener implements ServletContextListe
         logger.debug("The context has been initialized!");
 
         factory = Persistence.createEntityManagerFactory("site");
-        servletContextEvent.getServletContext().setAttribute("manager", factory.createEntityManager());
-        servletContextEvent.getServletContext().setAttribute("factory", new CommandFactory());
+        servletContextEvent.getServletContext().setAttribute(
+                Attribute.FACTORY_MANAGER.getName(),
+                factory.createEntityManager());
+        servletContextEvent.getServletContext().setAttribute(
+                Attribute.FACTORY_COMMAND.getName(),
+                new CommandFactory());
     }
 
     @Override

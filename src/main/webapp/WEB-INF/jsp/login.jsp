@@ -39,6 +39,7 @@
                     <div role="tabpanel" class="tab-pane fade in active" id="login">
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
+                                <p class="message">${requestScope.get('message')}</p>
                                 <p class="text-center">
                                     <a href="https://github.com" target="_blank"><i class="fa fa-github fa-2x pa"></i></a>
                                     <a href="https://stackoverflow.com" target="_blank"><i class="fa fa-stack-overflow fa-2x pa"></i></a>
